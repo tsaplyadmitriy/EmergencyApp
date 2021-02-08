@@ -17,6 +17,8 @@ class MyApp extends StatelessWidget {
 
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
+        unselectedWidgetColor: Color(0xFFEB5757),
+        toggleableActiveColor: Color(0xFFEB5757),
       ),
 
       home: CardUIPage(),
