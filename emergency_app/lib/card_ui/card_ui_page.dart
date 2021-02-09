@@ -1,4 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:emergency_app/components/rounded_input_field.dart';
+import 'package:emergency_app/components/text_checkbox.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,7 +11,7 @@ class CardUIPage extends StatelessWidget {
 
   CardUIPage({Key key}) : super(key: key);
 
-  var colors = [Colors.blue,Colors.red,Colors.yellow,Colors.purple,Colors.green];
+  var backGroundColor = 0xE5E5E5;
 
 
   @override
@@ -44,9 +46,12 @@ class CardUIPage extends StatelessWidget {
                       width: MediaQuery.of(context).size.width,
 
                       decoration: BoxDecoration(
-                          color: colors[i],
+                          color: Color(backGroundColor),
                       ),
-                      child: Center(child:Text('Text $i', style: TextStyle(fontSize: 16.0),))
+                      child: Center(
+                          widthFactor: 100,
+                          heightFactor: 150,
+                          child: new RoundedInputField())
                    );
 
                },
