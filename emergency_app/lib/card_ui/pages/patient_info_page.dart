@@ -1,5 +1,6 @@
 
 
+import 'package:emergency_app/components/text_checkbox.dart';
 import 'package:flutter/cupertino.dart';
 
 import 'base_page.dart';
@@ -21,7 +22,10 @@ class PatientInfoPage extends StatelessWidget implements BasePage{
         child:Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-           Text(screenName)
+           Text(screenName),
+            TextCheckbox(
+              text: "Test",
+            )
           ],
         )
     )
