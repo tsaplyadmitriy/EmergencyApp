@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
 
 class RoundedInputField extends StatefulWidget {
+
+  String _hintText;
+
+  RoundedInputField(String hintText) {
+    _hintText = hintText;
+  }
+
   @override
   State<StatefulWidget> createState() => _RoundedInputFieldState();
 }
@@ -8,7 +15,8 @@ class RoundedInputField extends StatefulWidget {
 class _RoundedInputFieldState extends State<RoundedInputField> {
   @override
   Widget build(BuildContext context) {
-    return TextFormField(decoration: beautifulDecoration("flex"));
+    return TextFormField(decoration: beautifulDecoration(widget._hintText),
+    );
   }
 }
 
