@@ -11,7 +11,7 @@ class CardUIPage extends StatelessWidget {
 
   CardUIPage({Key key}) : super(key: key);
 
-  var backGroundColor = 0xE5E5E5;
+  var colors = [Colors.blue,Colors.red,Colors.yellow,Colors.purple,Colors.green];
 
 
   @override
@@ -46,12 +46,9 @@ class CardUIPage extends StatelessWidget {
                       width: MediaQuery.of(context).size.width,
 
                       decoration: BoxDecoration(
-                          color: Color(backGroundColor),
+                        color: colors[i],
                       ),
-                      child: Center(
-                          widthFactor: 100,
-                          heightFactor: 150,
-                          child: new RoundedInputField())
+                      child: Center(child:Text('Text $i', style: TextStyle(fontSize: 16.0),))
                    );
 
                },

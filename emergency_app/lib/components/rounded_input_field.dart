@@ -12,15 +12,16 @@ class _RoundedInputFieldState extends State<RoundedInputField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      decoration: beautifulDecoration()
+      decoration: beautifulDecoration("flex")
     );
   }
 }
 
 
-InputDecoration beautifulDecoration() {
+InputDecoration beautifulDecoration(String inputText) {
     return new InputDecoration(
-        hintText: "Aee",
+        hintText: inputText,
+
         filled: true,
         fillColor: Color(0xFFF2F2F2),
         focusedBorder: OutlineInputBorder(
