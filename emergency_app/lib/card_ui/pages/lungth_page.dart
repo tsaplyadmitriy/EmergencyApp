@@ -1,6 +1,17 @@
 import 'package:flutter/cupertino.dart';
 
-class LungthPage extends StatelessWidget {
+import 'base_page.dart';
+
+class LungthPage extends StatelessWidget implements BasePage{
+
+  @override
+  String screenName;
+
+  LungthPage();
+
+  String get name => screenName;
+
+
   @override
   Widget build(BuildContext context) {
     return Container(
