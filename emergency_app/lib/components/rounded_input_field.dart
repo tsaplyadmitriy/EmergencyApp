@@ -24,7 +24,6 @@ class _RoundedInputFieldState extends State<RoundedInputField> {
       decoration: beautifulDecoration(widget._hintText),
       onChanged: (value) {
         generator.setTextValue(widget._fieldKey, value);
-        generator.generate();
       },
     );
   }
