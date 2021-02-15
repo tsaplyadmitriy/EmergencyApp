@@ -27,21 +27,26 @@ class CallInfoPage extends StatelessWidget implements BasePage {
                   textField: "1. Номер фельдшера по приему вызова",
                   width: width,
                   hintText: "Номер",
+                  fieldKey: TextFieldKey.SECTION_0_TEXT_1,
                 ),
                 Divider(
                   height: 24,
                 ),
                 beautifulRow(
-                    textField: "2. Номер станции (подстанции), отделения",
-                    width: width,
-                    hintText: "Номер"),
+                  textField: "2. Номер станции (подстанции), отделения",
+                  width: width,
+                  hintText: "Номер",
+                  fieldKey: TextFieldKey.SECTION_1_TEXT_1,
+                ),
                 Divider(
                   height: 24,
                 ),
                 beautifulRow(
-                    textField: "3. Номер бригады скорой медицинской помощи",
-                    width: width,
-                    hintText: "Номер"),
+                  textField: "3. Номер бригады скорой медицинской помощи",
+                  width: width,
+                  hintText: "Номер",
+                  fieldKey: TextFieldKey.SECTION_2_TEXT_1,
+                ),
                 Divider(
                   height: 24,
                 ),
@@ -77,6 +82,10 @@ class CallInfoPage extends StatelessWidget implements BasePage {
                   "Приема вызова",
                   "Передачи вызова бригаде",
                   "Ожидания бригады"
+                ], fieldKey: [
+                  TextFieldKey.SECTION_4_TEXT_1,
+                  TextFieldKey.SECTION_4_TEXT_2,
+                  TextFieldKey.SECTION_4_TEXT_3,
                 ]),
                 SizedBox(
                   height: 12,
@@ -99,6 +108,10 @@ class CallInfoPage extends StatelessWidget implements BasePage {
                   "Выезда на вызов",
                   "Прибытия на место вызова",
                   "Доезда до вызова"
+                ], fieldKey: [
+                  TextFieldKey.SECTION_4_TEXT_4,
+                  TextFieldKey.SECTION_4_TEXT_5,
+                  TextFieldKey.SECTION_4_TEXT_6,
                 ]),
                 SizedBox(
                   height: 12,
@@ -121,6 +134,10 @@ class CallInfoPage extends StatelessWidget implements BasePage {
                   "Начала транспортировки",
                   "Прибытия в мед. организ.",
                   "У больного"
+                ], fieldKey: [
+                  TextFieldKey.SECTION_4_TEXT_7,
+                  TextFieldKey.SECTION_4_TEXT_8,
+                  TextFieldKey.SECTION_4_TEXT_9,
                 ]),
                 SizedBox(
                   height: 12,
@@ -143,6 +160,10 @@ class CallInfoPage extends StatelessWidget implements BasePage {
                   "Окончания вызова",
                   "Возвращения на станцию",
                   "Общее на вызов"
+                ], fieldKey: [
+                  TextFieldKey.SECTION_4_TEXT_10,
+                  TextFieldKey.SECTION_4_TEXT_11,
+                  TextFieldKey.SECTION_4_TEXT_12,
                 ]),
               ],
             ))
@@ -174,6 +195,7 @@ Widget beautifulRow({
         width: (width - 32) / 2,
         child: RoundedInputField(
           hintText: hintText,
+          fieldKey: fieldKey,
         ),
       ),
     ],
@@ -181,7 +203,10 @@ Widget beautifulRow({
 }
 
 Widget beautifulRowOfInputs(
-    {double height, @required double width, @required List<String> hintText}) {
+    {double height,
+    @required double width,
+    @required List<String> hintText,
+    @required List<TextFieldKey> fieldKey}) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
@@ -190,6 +215,7 @@ Widget beautifulRowOfInputs(
         width: (width - 64) / 3,
         child: RoundedInputField(
           hintText: hintText[0],
+          fieldKey: fieldKey[0],
         ),
       ),
       Container(
@@ -197,6 +223,7 @@ Widget beautifulRowOfInputs(
         width: (width - 64) / 3,
         child: RoundedInputField(
           hintText: hintText[1],
+          fieldKey: fieldKey[1],
         ),
       ),
       Container(
@@ -204,6 +231,7 @@ Widget beautifulRowOfInputs(
         width: (width - 64) / 3,
         child: RoundedInputField(
           hintText: hintText[2],
+          fieldKey: fieldKey[2],
         ),
       ),
     ],
