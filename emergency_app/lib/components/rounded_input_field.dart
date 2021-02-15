@@ -1,11 +1,15 @@
+import 'package:emergency_app/card_gen/card_generator.dart';
 import 'package:flutter/material.dart';
 
 class RoundedInputField extends StatefulWidget {
   final String _hintText;
+  final TextFieldKey _fieldKey;
 
-  const RoundedInputField({Key key, @required String hintText})
+  const RoundedInputField(
+      {Key key, @required String hintText, @required TextFieldKey fieldKey})
       : assert(hintText != null),
         _hintText = hintText,
+        _fieldKey = fieldKey,
         super(key: key);
 
   @override
@@ -15,8 +19,12 @@ class RoundedInputField extends StatefulWidget {
 class _RoundedInputFieldState extends State<RoundedInputField> {
   @override
   Widget build(BuildContext context) {
+    CardGenerator generator = new CardGenerator();
     return TextFormField(
       decoration: beautifulDecoration(widget._hintText),
+      onChanged: (value) {
+        generator.setTextValue(widget._fieldKey, value);
+      },
     );
   }
 }
