@@ -23,7 +23,7 @@ class CallInfoPage extends StatelessWidget implements BasePage {
             margin: EdgeInsets.all(16),
             child: Column(
               children: [
-                beautifulRow(
+                RowTitleAndInputField(
                   textField: "1. Номер фельдшера по приему вызова",
                   width: width,
                   hintText: "Номер",
@@ -32,7 +32,7 @@ class CallInfoPage extends StatelessWidget implements BasePage {
                 Divider(
                   height: 24,
                 ),
-                beautifulRow(
+                RowTitleAndInputField(
                   textField: "2. Номер станции (подстанции), отделения",
                   width: width,
                   hintText: "Номер",
@@ -41,7 +41,7 @@ class CallInfoPage extends StatelessWidget implements BasePage {
                 Divider(
                   height: 24,
                 ),
-                beautifulRow(
+                RowTitleAndInputField(
                   textField: "3. Номер бригады скорой медицинской помощи",
                   width: width,
                   hintText: "Номер",
@@ -78,7 +78,7 @@ class CallInfoPage extends StatelessWidget implements BasePage {
                 SizedBox(
                   height: 6,
                 ),
-                beautifulRowOfInputs(width: width, hintText: [
+                RowOf3Inputs(width: width, hintText: [
                   "Приема вызова",
                   "Передачи вызова бригаде",
                   "Ожидания бригады"
@@ -104,7 +104,7 @@ class CallInfoPage extends StatelessWidget implements BasePage {
                 SizedBox(
                   height: 6,
                 ),
-                beautifulRowOfInputs(width: width, hintText: [
+                RowOf3Inputs(width: width, hintText: [
                   "Выезда на вызов",
                   "Прибытия на место вызова",
                   "Доезда до вызова"
@@ -130,7 +130,7 @@ class CallInfoPage extends StatelessWidget implements BasePage {
                 SizedBox(
                   height: 6,
                 ),
-                beautifulRowOfInputs(width: width, hintText: [
+                RowOf3Inputs(width: width, hintText: [
                   "Начала транспортировки",
                   "Прибытия в мед. организ.",
                   "У больного"
@@ -156,7 +156,7 @@ class CallInfoPage extends StatelessWidget implements BasePage {
                 SizedBox(
                   height: 6,
                 ),
-                beautifulRowOfInputs(width: width, hintText: [
+                RowOf3Inputs(width: width, hintText: [
                   "Окончания вызова",
                   "Возвращения на станцию",
                   "Общее на вызов"
@@ -172,7 +172,7 @@ class CallInfoPage extends StatelessWidget implements BasePage {
   }
 }
 
-Widget beautifulRow({
+Widget RowTitleAndInputField({
   @required String textField,
   String hintText,
   @required double width,
@@ -202,7 +202,7 @@ Widget beautifulRow({
   );
 }
 
-Widget beautifulRowOfInputs(
+Widget RowOf3Inputs(
     {double height,
     @required double width,
     @required List<String> hintText,
