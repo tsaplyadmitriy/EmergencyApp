@@ -21,6 +21,7 @@ class CardUIPage extends StatefulWidget {
 class _CardUIPage extends State<CardUIPage>  {
 
 
+  final callInfoPage = CallInfoPage();
   BasePage currentPage;
   @override
   void initState() {
@@ -68,7 +69,7 @@ class _CardUIPage extends State<CardUIPage>  {
 
                 title: Text('Информация о вызове'),
                 onTap: () {
-                  currentPage = CallInfoPage();
+                  currentPage =callInfoPage;
                   Navigator.pop(context);
                   setState(() {
 

@@ -9,12 +9,15 @@ class CallInfoPage extends StatelessWidget implements BasePage {
   @override
   String screenName = "Информация о вызове";
 
+  String test = "";
+
   CallInfoPage();
 
   String get name => screenName;
 
   @override
   Widget build(BuildContext context) {
+
     double width = MediaQuery.of(context).size.width;
     return ListView(
       children: [
@@ -78,7 +81,13 @@ class CallInfoPage extends StatelessWidget implements BasePage {
                 SizedBox(
                   height: 6,
                 ),
-                RowOf3Inputs(width: width, hintText: [
+                RowOf3Inputs(
+                    first: (value){
+                      test = value;
+                      print(test);
+
+                    },
+                    width: width, hintText: [
                   "Приема вызова",
                   "Передачи вызова бригаде",
                   "Ожидания бригады"
@@ -204,7 +213,10 @@ Widget RowTitleAndInputField({
 
 Widget RowOf3Inputs(
     {double height,
-    @required double width,
+    @required Function first,
+      @required Function second,
+      @required Function third,
+      @required double width,
     @required List<String> hintText,
     @required List<TextFieldKey> fieldKey}) {
   return Row(
@@ -214,6 +226,7 @@ Widget RowOf3Inputs(
         height: height,
         width: (width - 64) / 3,
         child: RoundedInputField(
+
           hintText: hintText[0],
           fieldKey: fieldKey[0],
         ),
@@ -222,6 +235,7 @@ Widget RowOf3Inputs(
         height: height,
         width: (width - 64) / 3,
         child: RoundedInputField(
+
           hintText: hintText[1],
           fieldKey: fieldKey[1],
         ),

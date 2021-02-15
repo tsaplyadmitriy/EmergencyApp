@@ -34,6 +34,10 @@ class CardGenerator {
     _checkboxKeyMap[fieldKey] = value;
   }
 
+  String  getTextValue(TextFieldKey fieldKey){
+    return _textKeyMap[fieldKey];
+  }
+
   // Symbol for checked checkboxes
   static const String CHECKBOX_CHECKED = "☒";
 

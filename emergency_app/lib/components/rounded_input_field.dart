@@ -5,11 +5,13 @@ class RoundedInputField extends StatefulWidget {
   final String _hintText;
   final TextFieldKey _fieldKey;
 
+
   const RoundedInputField(
       {Key key, @required String hintText, @required TextFieldKey fieldKey})
       : assert(hintText != null),
         _hintText = hintText,
         _fieldKey = fieldKey,
+
         super(key: key);
 
   @override
@@ -17,14 +19,23 @@ class RoundedInputField extends StatefulWidget {
 }
 
 class _RoundedInputFieldState extends State<RoundedInputField> {
+
+
   @override
   Widget build(BuildContext context) {
-    CardGenerator generator = new CardGenerator();
+    CardGenerator generator =  CardGenerator();
     return TextFormField(
+
+      
+      controller: TextEditingController(text: generator.getTextValue(widget._fieldKey)),
       decoration: beautifulDecoration(widget._hintText),
       onChanged: (value) {
+          
         generator.setTextValue(widget._fieldKey, value);
-      },
+        
+
+
+        },
     );
   }
 }
