@@ -57,12 +57,12 @@ class CardGenerator {
 
     // Injecting text values
     for (final e in _textKeyMap.entries) {
-      c.add(TextContent(e.key.toString().substring(13), e.value));
+      c.add(TextContent(e.key.toString().split('.').last, e.value));
     }
 
     // Injecting checkbox values
     for (final e in _checkboxKeyMap.entries) {
-      c.add(TextContent(e.key.toString().substring(17), e.value ? CHECKBOX_CHECKED : CHECKBOX_UNCHECKED));
+      c.add(TextContent(e.key.toString().split('.').last, e.value ? CHECKBOX_CHECKED : CHECKBOX_UNCHECKED));
     }
     return docx.generate(c);
   }
@@ -84,17 +84,13 @@ class CardGenerator {
   /// to the moment it was created
   Future<File> _createFile() async {
     final path = await _getPath();
-    final file = File('$path/generated/' + DateTime
-        .now()
-        .millisecondsSinceEpoch
-        .toString() + '.docx');
+    final name = '$path/generated/' + DateTime.now().toString() + '.docx';
+
+    final file = File(name);
     if (await file.exists()) {
       return file;
     } else {
-      return new File('$path/generated/' + DateTime
-          .now()
-          .millisecondsSinceEpoch
-          .toString() + '.docx').create(recursive: true);
+      return new File(name).create(recursive: true);
     }
   }
 
@@ -104,14 +100,13 @@ class CardGenerator {
     /// Initializing all fieldы: checkboxes with an empty unicode box,
     /// text with an empty string
     for (final key in TextFieldKey.values) {
-      _textKeyMap[key] = "FILLED";
+      _textKeyMap[key] = "";
     }
     for (final key in CheckBoxFieldKey.values) {
       _checkboxKeyMap[key] = false;
     }
     // **************************************************************
 
-    print("Singleton have been created");
   }
 }
 
