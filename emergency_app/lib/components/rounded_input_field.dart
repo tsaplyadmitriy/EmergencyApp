@@ -26,6 +26,7 @@ class _RoundedInputFieldState extends State<RoundedInputField> {
     CardGenerator generator =  CardGenerator();
     return TextFormField(
 
+      maxLines: null,
       
       controller: TextEditingController(text: generator.getTextValue(widget._fieldKey)),
       decoration: beautifulDecoration(widget._hintText),

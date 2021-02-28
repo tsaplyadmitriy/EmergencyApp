@@ -15,20 +15,17 @@ class PatientInfoPage extends StatelessWidget implements BasePage{
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        child:
-        Center(
+    double width = MediaQuery.of(context).size.width;
+    return ListView(children: [
+      Container(
+        alignment: Alignment.topCenter,
+        margin: EdgeInsets.all(16),
+        child: Column(children: [
 
-        child:Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-           Text(screenName),
-            TextCheckbox(
-              text: "Test",
-            )
-          ],
-        )
-    )
-    );
+          
+        ],),
+      )
+
+    ],);
   }
 }

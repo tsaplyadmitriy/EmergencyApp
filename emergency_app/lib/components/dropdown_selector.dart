@@ -4,9 +4,10 @@ class DropdownSelector extends StatefulWidget {
   final String hintText;
   final List<String> items;
   final String currentItem;
+  final double width;
 
   const DropdownSelector(
-      {Key key, @required this.items, String hintText, this.currentItem})
+      {Key key, @required this.items, String hintText, this.currentItem,this.width})
       : assert(items != null),
         this.hintText = hintText != null ? hintText : "Не выбрано",
         super(key: key);
@@ -27,6 +28,8 @@ class _DropdownSelectorState extends State<DropdownSelector> {
     for (String item in widget.items) {
       dropDownItems.add(
         DropdownMenuItem(
+
+
           child: Text(
             item,
             overflow: TextOverflow.ellipsis,
@@ -50,28 +53,42 @@ class _DropdownSelectorState extends State<DropdownSelector> {
   @override
   Widget build(BuildContext context) {
     return Container(
+
       padding: EdgeInsets.symmetric(
         horizontal: 12.0,
       ),
+
       decoration: BoxDecoration(
+
         borderRadius: BorderRadius.all(Radius.circular(12.0)),
         color: Color(0xFFF2F2F2),
       ),
       child: DropdownButtonHideUnderline(
-        child: DropdownButton<String>(
+
+
+        child: Container(
+
+          width: widget.width,
+          height: 60,
+          child:DropdownButton<String>(
+
+
           value: currentItem,
           icon: Icon(Icons.keyboard_arrow_down),
           iconEnabledColor: Color(0xFFEB5757),
           iconDisabledColor: Color(0xFFEB5757),
           items: dropDownItems,
+
           hint: Text(widget.hintText),
-          isExpanded: true,
+
+          //isExpanded: true,
           onChanged: (value) {
             setState(() {
               currentItem = value;
             });
           },
         ),
+      )
       ),
     );
   }

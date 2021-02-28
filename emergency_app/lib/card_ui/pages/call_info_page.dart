@@ -6,6 +6,7 @@ import 'base_page.dart';
 import 'package:emergency_app/card_gen/card_generator.dart';
 
 class CallInfoPage extends StatelessWidget implements BasePage {
+
   @override
   String screenName = "Информация о вызове";
 
