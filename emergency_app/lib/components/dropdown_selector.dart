@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:emergency_app/card_gen/card_generator.dart';
 
 class DropdownSelector extends StatefulWidget {
   final String hintText;
   final List<String> items;
   final String currentItem;
+
+  final TextFieldKey fieldKey;
+  final String additionalText;
   final double width;
 
   const DropdownSelector(
-      {Key key, @required this.items, String hintText, this.currentItem,this.width})
+      {Key key, @required this.items, String hintText, this.currentItem,
+        this.fieldKey, this.additionalText,this.width})
+
       : assert(items != null),
         this.hintText = hintText != null ? hintText : "Не выбрано",
         super(key: key);
@@ -52,6 +58,7 @@ class _DropdownSelectorState extends State<DropdownSelector> {
 
   @override
   Widget build(BuildContext context) {
+    CardGenerator generator =  CardGenerator();
     return Container(
 
       padding: EdgeInsets.symmetric(
@@ -86,6 +93,7 @@ class _DropdownSelectorState extends State<DropdownSelector> {
             setState(() {
               currentItem = value;
             });
+            generator.setTextValue(widget.fieldKey, widget.additionalText);
           },
         ),
       )
