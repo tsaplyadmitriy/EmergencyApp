@@ -3,6 +3,7 @@ import 'package:emergency_app/card_ui/pages/base_page.dart';
 import 'package:emergency_app/card_ui/pages/call_info_page.dart';
 import 'package:emergency_app/card_ui/pages/diagnosis_page.dart';
 import 'package:emergency_app/card_ui/pages/lungth_page.dart';
+import 'package:emergency_app/card_ui/pages/notes_page.dart';
 import 'package:emergency_app/card_ui/pages/patient_info_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -93,6 +94,17 @@ class _CardUIPage extends State<CardUIPage>  {
                 title: Text('Диагноз'),
                 onTap: () {
                   currentPage = DiagnosisPage();
+                  Navigator.pop(context);
+                  setState(() {
+
+                  });
+                },
+              ),
+              Divider(),
+              ListTile(
+                title: Text('Примечания'),
+                onTap: () {
+                  currentPage = NotesPage();
                   Navigator.pop(context);
                   setState(() {
 
