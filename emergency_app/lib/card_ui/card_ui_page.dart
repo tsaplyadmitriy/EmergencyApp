@@ -43,54 +43,61 @@ class _CardUIPage extends State<CardUIPage> {
         // Add a ListView to the drawer. This ensures the user can scroll
         // through the options in the drawer if there isn't enough vertical
         // space to fit everything.
-        child: ListView(
-          // Important: Remove any padding from the ListView.
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            Container(
-                height: 120,
-                child: DrawerHeader(
-                  child: Text('Меню'),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                  ),
-                )),
-            ListTile(
-              title: Text('Информация о вызове'),
-              onTap: () {
-                currentPage = callInfoPage;
-                Navigator.pop(context);
-                setState(() {});
-              },
-            ),
-            Divider(),
-            ListTile(
-              title: Text('Сведения о больном'),
-              onTap: () {
-                currentPage = PatientInfoPage();
-                Navigator.pop(context);
-                setState(() {});
-              },
-            ),
-            Divider(),
-            ListTile(
-              title: Text('Диагноз'),
-              onTap: () {
-                currentPage = DiagnosisPage();
-                Navigator.pop(context);
-                setState(() {});
-              },
-            ),
-            Divider(),
-            ListTile(
-              title: Text('Примечания'),
-              onTap: () {
-                currentPage = NotesPage();
-                Navigator.pop(context);
-                setState(() {});
-              },
-            ),
-          ],
+        child: SafeArea(
+          child: ListView(
+            // Important: Remove any padding from the ListView.
+            padding: EdgeInsets.zero,
+            children: <Widget>[
+              // Container(
+              //   height: 120,
+              //   child: DrawerHeader(
+              //     child: Text(
+              //       'Меню',
+              //       style: TextStyle(fontSize: 24),
+              //     ),
+              //     decoration: BoxDecoration(
+              //       color: Colors.white,
+              //     ),
+              //   ),
+              // ),
+              Divider(),
+              ListTile(
+                title: Text('Информация о вызове'),
+                onTap: () {
+                  currentPage = callInfoPage;
+                  Navigator.pop(context);
+                  setState(() {});
+                },
+              ),
+              Divider(),
+              ListTile(
+                title: Text('Сведения о больном'),
+                onTap: () {
+                  currentPage = PatientInfoPage();
+                  Navigator.pop(context);
+                  setState(() {});
+                },
+              ),
+              Divider(),
+              ListTile(
+                title: Text('Диагноз'),
+                onTap: () {
+                  currentPage = DiagnosisPage();
+                  Navigator.pop(context);
+                  setState(() {});
+                },
+              ),
+              Divider(),
+              ListTile(
+                title: Text('Примечания'),
+                onTap: () {
+                  currentPage = NotesPage();
+                  Navigator.pop(context);
+                  setState(() {});
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );

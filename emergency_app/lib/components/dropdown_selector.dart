@@ -13,9 +13,15 @@ class DropdownSelector extends StatefulWidget {
   final int idOfCheckBoxWithText;
 
   const DropdownSelector(
-      {Key key, @required this.items, @required this.itemsCheckBoxFieldKey ,String hintText,
-        this.currentItem, this.textFieldKey, this.width, this.idOfCheckBoxWithText, this.additionalTextHint})
-
+      {Key key,
+      @required this.items,
+      @required this.itemsCheckBoxFieldKey,
+      String hintText,
+      this.currentItem,
+      this.textFieldKey,
+      this.width,
+      this.idOfCheckBoxWithText,
+      this.additionalTextHint})
       : assert(items != null),
         this.hintText = hintText != null ? hintText : "Не выбрано",
         super(key: key);
@@ -37,7 +43,6 @@ class _DropdownSelectorState extends State<DropdownSelector> {
     for (String item in widget.items) {
       dropDownItems.add(
         DropdownMenuItem(
-
           child: Text(
             item,
             overflow: TextOverflow.ellipsis,
@@ -60,79 +65,84 @@ class _DropdownSelectorState extends State<DropdownSelector> {
 
   @override
   Widget build(BuildContext context) {
-    CardGenerator generator =  CardGenerator();
+    CardGenerator generator = CardGenerator();
     bool _isVisible = false;
     return Container(
-      padding: EdgeInsets.symmetric(
-        horizontal: 12.0,
-      ),
-
+      height: 60,
+      width: widget.width,
+      padding: EdgeInsets.symmetric(horizontal: 12.0),
       decoration: BoxDecoration(
-
         borderRadius: BorderRadius.all(Radius.circular(12.0)),
         color: Color(0xFFF2F2F2),
       ),
-      child:
-          DropdownButtonHideUnderline(
+      child: DropdownButtonHideUnderline(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              DropdownButton<String>(
+                isExpanded: true,
+                value: currentItem,
+                icon: Icon(Icons.keyboard_arrow_down),
+                iconEnabledColor: Color(0xFFEB5757),
+                iconDisabledColor: Color(0xFFEB5757),
+                items: dropDownItems,
+                hint: Text(
+                  widget.hintText,
+                  maxLines: 1,
+                ),
 
-            child: Container(
-
-              width: widget.width,
-              height: 60,
-              child:Column(
-                children: [
-                  DropdownButton<String>(
-
-                  value: currentItem,
-                  icon: Icon(Icons.keyboard_arrow_down),
-                  iconEnabledColor: Color(0xFFEB5757),
-                  iconDisabledColor: Color(0xFFEB5757),
-                  items: dropDownItems,
-                  hint: Text(widget.hintText),
-
-                  //isExpanded: true,
-                  onChanged: (value) {
-                    setState(() {
+                //isExpanded: true,
+                onChanged: (value) {
+                  setState(
+                    () {
                       currentItem = value;
 
-                      if(currentItem == dropDownItems[widget.idOfCheckBoxWithText].value)
+                      if (currentItem ==
+                          dropDownItems[widget.idOfCheckBoxWithText].value)
                         _isVisible = true;
-                      else _isVisible = false;
+                      else
+                        _isVisible = false;
 
-                      for(int i = 0; i < dropDownItems.length; i++){
-                        if(currentItem == dropDownItems[i].value){
+                      for (int i = 0; i < dropDownItems.length; i++) {
+                        if (currentItem == dropDownItems[i].value) {
                           checkBoxId = i;
                         }
                       }
-                    });
+                    },
+                  );
 
-                    generator.setCheckboxValue(widget.itemsCheckBoxFieldKey[checkBoxId], true);
-                  },
-            ),
-                  Visibility(
-                    visible: _isVisible,
-                      child: TextBoxView(hint: widget.additionalTextHint, textFieldKey: widget.textFieldKey, width: widget.width)
-                  )
-                ],
+                  generator.setCheckboxValue(
+                      widget.itemsCheckBoxFieldKey[checkBoxId], true);
+                },
               ),
-          )
+              Visibility(
+                visible: _isVisible,
+                child: TextBoxView(
+                    hint: widget.additionalTextHint,
+                    textFieldKey: widget.textFieldKey,
+                    width: widget.width),
+              )
+            ],
           ),
+        ),
+      ),
     );
   }
 }
 
-class TextBoxView extends StatelessWidget{
+class TextBoxView extends StatelessWidget {
   final String hint;
   final TextFieldKey textFieldKey;
   final double width;
-  TextBoxView({@required this.hint, @required this.textFieldKey, @required this.width});
+  TextBoxView(
+      {@required this.hint, @required this.textFieldKey, @required this.width});
 
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Container(
       width: width,
-      child:
-      RoundedInputField(
+      child: RoundedInputField(
         hintText: hint,
         fieldKey: textFieldKey,
       ),
