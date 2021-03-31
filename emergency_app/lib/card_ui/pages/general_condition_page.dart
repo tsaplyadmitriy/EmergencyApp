@@ -14,39 +14,63 @@ class GeneralConditionPage extends StatelessWidget implements BasePage {
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: EdgeInsets.fromLTRB(16.0,36.0,16.0,36.0),
-        child: Column(
-          children: [
-            TitleAndDropBox(
-                titleText: "Общее состояние",
-                dropBoxCases: [
-                  "удовлетворительное", "средней степени тяжести",
-                  "тяжелое", "крайне тяжелая за счет", "агональное",
-                  "смерть"
-                ],
-                fieldKey: TextFieldKey.SECTION_22_SUBSECTION_1_TEXT_1
-            ),
-            Divider(height: 24.0),
-            TitleAndDropBox(
-                titleText: "Поведение",
-                dropBoxCases: [
-                  "спокойное", "возбужденное",
-                  "агрессивное", "депрессивное"
-                ],
-            ),
-            Divider(height: 24.0),
-            TitleAndDropBox(
+      padding: EdgeInsets.fromLTRB(16.0,36.0,16.0,36.0),
+      child: Column(
+        children: [
+          TitleAndDropBox(
+              titleText: "Общее состояние",
+              dropBoxCases: [
+                "удовлетворительное", "средней степени тяжести",
+                "тяжелое", "крайне тяжелая за счет", "агональное",
+                "смерть"
+              ],
+              checkboxFields: [
+                CheckBoxFieldKey.SECTION_22_SUBSECTION_1_CHECKBOX_1,
+                CheckBoxFieldKey.SECTION_22_SUBSECTION_1_CHECKBOX_2,
+                CheckBoxFieldKey.SECTION_22_SUBSECTION_1_CHECKBOX_3,
+                CheckBoxFieldKey.SECTION_22_SUBSECTION_1_CHECKBOX_4,
+                CheckBoxFieldKey.SECTION_22_SUBSECTION_1_CHECKBOX_5,
+                CheckBoxFieldKey.SECTION_22_SUBSECTION_1_CHECKBOX_6
+              ],
+              idOfCheckBoxWithText: 3,
+              fieldKey: TextFieldKey.SECTION_22_SUBSECTION_1_TEXT_1
+          ),
+          Divider(height: 24.0),
+          TitleAndDropBox(
+            titleText: "Поведение",
+            dropBoxCases: [
+              "спокойное", "возбужденное",
+              "агрессивное", "депрессивное"
+            ],
+            checkboxFields: [
+              CheckBoxFieldKey.SECTION_22_SUBSECTION_2_CHECKBOX_1,
+              CheckBoxFieldKey.SECTION_22_SUBSECTION_2_CHECKBOX_2,
+              CheckBoxFieldKey.SECTION_22_SUBSECTION_2_CHECKBOX_3,
+              CheckBoxFieldKey.SECTION_22_SUBSECTION_2_CHECKBOX_4,
+            ],
+          ),
+          Divider(height: 24.0),
+          TitleAndDropBox(
               titleText: "Сознание",
               dropBoxCases: [
                 "ясное", "спутанное",
                 "заторможенное", "сомнолентность",
                 "кома", "отсутствует"
               ],
-              fieldKey: TextFieldKey.SECTION_22_SUBSECTION_3_TEXT_1
-            ),
-            Divider(height: 24.0)
-          ],
-    ),
+              checkboxFields: [
+                CheckBoxFieldKey.SECTION_22_SUBSECTION_3_CHECKBOX_1,
+                CheckBoxFieldKey.SECTION_22_SUBSECTION_3_CHECKBOX_2,
+                CheckBoxFieldKey.SECTION_22_SUBSECTION_3_CHECKBOX_3,
+                CheckBoxFieldKey.SECTION_22_SUBSECTION_3_CHECKBOX_4,
+                CheckBoxFieldKey.SECTION_22_SUBSECTION_3_CHECKBOX_5,
+                CheckBoxFieldKey.SECTION_22_SUBSECTION_3_CHECKBOX_6
+              ],
+              idOfCheckBoxWithText: 4,
+              fieldKey: TextFieldKey.SECTION_22_SUBSECTION_3_TEXT_1,
+          ),
+          Divider(height: 24.0)
+        ],
+      ),
     );
   }
 }
@@ -55,29 +79,33 @@ class GeneralConditionPage extends StatelessWidget implements BasePage {
 Widget TitleAndDropBox ({
   @required String titleText,
   @required List<String> dropBoxCases,
+  List<CheckBoxFieldKey> checkboxFields,
+  int idOfCheckBoxWithText,
   TextFieldKey fieldKey,
-  String additionalText
-
 })
+
 {
-return Row(
-  children: [
-    Expanded(
-      child: Container(
-        child: Text(
-          titleText,
-          style: TextStyle(fontWeight: FontWeight.bold),
+  return Row(
+    children: [
+      Expanded(
+        child: Container(
+          child: Text(
+            titleText,
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
         ),
       ),
-    ),
-    Expanded(
-        child: Container(
-          child: DropdownSelector(
-            items: dropBoxCases,
-          ),
-        )
-    )
-  ],
+      Expanded(
+          child: Container(
+            child: DropdownSelector(
+              items: dropBoxCases,
+              itemsCheckBoxFieldKey: checkboxFields,
+              idOfCheckBoxWithText: idOfCheckBoxWithText,
+              textFieldKey: fieldKey,
+            ),
+          )
+      )
+    ],
 
-);
+  );
 }
