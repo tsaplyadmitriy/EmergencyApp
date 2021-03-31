@@ -71,8 +71,7 @@ class DiagnosisPage extends StatelessWidget implements BasePage{
                         Expanded(
                           child: Container(
                             child: DropdownSelector(
-                                items: ["код A", "код B", "код C"],
-                                itemsCheckBoxFieldKey: []                              // Just DropDown(not check box)
+                                items: ["код A", "код B", "код C"]                             // Just DropDown(not check box)
                             ),
                           ),
                         ),
@@ -80,8 +79,7 @@ class DiagnosisPage extends StatelessWidget implements BasePage{
                         Expanded(
                           child: Container(
                             child: DropdownSelector(
-                                items: ["1", "2", "3"],
-                                itemsCheckBoxFieldKey: []                              // Just DropDown(not check box)
+                                items: ["1", "2", "3"]                                        // Just DropDown(not check box)
                             ),
                           ),
                         ),
