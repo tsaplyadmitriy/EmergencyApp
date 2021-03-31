@@ -23,4 +23,8 @@ class NotesPage extends StatelessWidget implements BasePage {
               hintText: "Примечания", fieldKey: TextFieldKey.SECTION_37_TEXT_1)
         ]));
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> origin/main
